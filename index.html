@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Startcode Exercise 2</title>
+    <title>hobbysiden</title>
 </head>
 <body>
 <div id="all-content" style="display: none">
     <ul id="menu" class="header">
         <li><a href="" id="about">About</a></li>
-        <li><a href="" id="ex1">Ex1</a></li>
+        <li><a href="" id="ex1">get person by phone</a></li>
         <li><a href="" id="ex2">Ex2</a></li>
         <li><a href="" id="ex3">Ex3</a></li>
     </ul>
@@ -17,16 +17,15 @@
     <div class="content">
         <!-- Exercise-1 -->
         <div id="ex1_html" style="display: none">
-            <h3>Exercise 1</h3>
-            <p>Add your basic HTML for Exercise 1 here</p>
-            <ul id="jokes"></ul>
-        </div>
-        <h3>Persondata:</h3>
-        indtast id på person:<br/>
-        <input id="person_id" type="text"/>
-        <button id="person_id_button">Søg</button>
+            <h3>get person by phone</h3>
+            <!--            <ul id="jokes"></ul>-->
+            <h3>Persondata:</h3>
+            indtast tlf nr på person: 11223344<br/>
+            <input id="person_phone_number" type="text" value="11223344"/>
+            <button id="person_id_button">Søg</button>
 
-        <p id="persondata"></p>
+            <p id="persondata"></p>
+        </div>
         <!-- End of HTML for exercise-1 -->
 
         <!-- Exercise-2 -->
@@ -39,8 +38,6 @@
         <!-- Exercise-3 -->
         <div id="ex3_html" style="display: none">
             <h3>Ex-3</h3>
-            <p>Add your basic HTML for Exercise 3 here</p>
-
             <div class="row" style="min-height: 5em">
                 <div
                         class="col-md-8 pre-scrollable"
@@ -50,17 +47,16 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Age</th>
-                            <th>Name</th>
-                            <th></th>
-                            <th>Gender</th>
-                            <th>Email</th>
+                            <th>Id:</th>
+                            <th>Email:</th>
+                            <th>Name:</th>
+                            <th>Address:</th>
+                            <th>Phones:</th>
+                            <th>Hobbies:</th>
                         </tr>
                         </thead>
-
-                        <tbody id="allUserRows"></tbody>
-                        <tbody></tbody>
+                        <tbody id="allUserRows">
+                        </tbody>
                     </table>
                 </div>
                 <div class="col-md-4" style="background-color: powderblue">
@@ -83,11 +79,6 @@
 
         <!---- HTML for the About page -->
         <div id="about_html" style="display: none">
-            <h3>About</h3>
-            <p>
-                Watch the small video given as intro to this code, BEFORE you start
-                using it
-            </p>
         </div>
         <!-- End of HTML for ABOUT Page -->
 

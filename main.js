@@ -1,4 +1,5 @@
 import "./style.css";
+import personFacade from "./personFacade.js";
 
 document.getElementById("all-content").style.display = "block";
 
@@ -8,52 +9,52 @@ document.getElementById("all-content").style.display = "block";
 
 /* JS For Exercise-1 below */
 // const text = document.getElementById("text");
-const personId = document.getElementById("person_id");
+const phoneNumber = document.getElementById("person_phone_number");
 const button = document.getElementById("person_id_button");
 const result = document.getElementById("persondata");
-console.log(personId);
+const persons = document.getElementById("allUserRows");
 console.log(button);
 console.log(result);
 
 const renderPerson = (json) => {
-    // return `email: ${json.email}</br>
-    //   firstname: ${json.firstName}</br>
-    //   lastname: ${json.lastName}</br>
-    //   `;
     return json.map((curr) => `<tr><td>${curr.id}</td>
                                 <td>${curr.email}</td>
                                 <td>${curr.firstName}</td>
                                 <td>${curr.lastName}</td>
-                                <td>${curr.address.zip}</td>
-                                <td>${curr.address.street}</td>
-                                <td>${curr.phones.map(currp => `${currp.phoneNumber} ${currp.description}`)}</td>
-                                <td>${curr.hobbies.map(currh => `${currh.name} ${currh.wikiLink}`)}</td>
+                                <td>| ${curr.address.zip}</td>
+                                <td>${curr.address.street} |</td>
+                                <td>${curr.phones.map(currp => `${currp.phoneNumber}-${currp.description}`)}</td>
+                                <td>${curr.hobbies.map(currh => `<br>* <a href="${currh.wikiLink}">${currh.name}</a>, ${currh.category}, ${currh.type}`)}</td>
                                 </tr>
 `)
 };
+const renderPerson2 = (json) => {
+    return json.map((curr) => `<tr><td>${curr.id}</td>
+                                <td>${curr.email}</td>
+                                <td>${curr.firstName} ${curr.lastName}</td>
+                                <td>${curr.address.zip} ${curr.address.street}</td>
+                                <td>${curr.phones.map(currp => `${currp.phoneNumber}-${currp.description}`)}</td>
+                                <td>${curr.hobbies.map(currh => `<br><a href="${currh.wikiLink}">${currh.name}</a>, ${currh.category}, ${currh.type}`)}</td>
+    </tr>`).join("")
+};
 
 button.addEventListener("click", () => {
-    const id = personId.value;
-    //   result.innerText = "id:" + id;
-    // fetch('https://markchomin.com/ca1/api/person/phone/11223344')
-    //     .then(res=> {
-    //       res.json()
-    //       console.log("ok:", res.ok)
-    //       console.log("status: ", res.status)
-    //       console.log("text: ", res.statusText)
-    //     })
-    //     .then(data => console.log(data.name))
-
-    const url = "https://markchomin.com/ca1/api/person/phone/11223344";
-
-    fetch(url)
-        .then((res) => res.json())
+    const number = phoneNumber.value;
+    // const url = "https://markchomin.com/ca1/api/person/phone/"+number;
+    // fetch(url)
+    // .then((res) => res.json())
+    //the above lines are replaced by the personFacade:
+    personFacade.getPersonByPhone(number)
         .then((data) => {
             console.log("data", data);
             result.innerHTML = renderPerson(data);
         });
 });
 
+personFacade.getAllPersons().then((data) => {
+    console.log("data", data)
+    persons.innerHTML = renderPerson2(data)
+})
 /* JS For Exercise-2 below */
 
 /* JS For Exercise-3 below */
